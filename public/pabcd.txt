@@ -1,0 +1,2042 @@
+Q.1 What is PHP  ? 
+    - Php is open-source ,interpreted,  object-oriented Scripting language that can be executed at server-side.
+    - Php was created by rasmus lerdorf in 1994 but appeared in the market in 1995. 
+    - latest verion of php is 8.3.10, which was released on August 1, 2024.
+    - PHP stands for Hypertext preprocessor. 
+    - PHP can embeded into HTML . 
+    - PHP file contains text , html,CSS javascript & Php code.
+    - Extension of php file is ".php" .
+    - PHP Code is executed on server and the result retured to browser as a plain HTML
+    - It is used to design the dynamic web application with Mysql database.
+    - PHP is compatible with many sever like APACHE , IIS(Internet Information Service).
+    - PHP Supports wide range of database like  mysql , postgresql , oracle database.
+    - Write php code anywhere in your php file.
+    - Php scripts starts with "<?php"  and end with "?>"
+
+Note : PHP statements ends with semicolon(;) .
+
+==========================================================================================================================================================================
+
+Q.2  spaceship operator(<=>) 
+    1. It is used to compare two expression. It behave like strcmp().
+    2. It returs 0 if both operand are equal.
+    3. It returns 1 if Left oprand is grater than right oprand.
+    4. It returns -1 if right oprand is grater than left oprand.
+
+==============================================================================================================================================================================
+
+Q.3 which things are not case-sensetive ?  
+    1. Keywords( e.g. if, else, while, echo, etc.)
+    2. classes 
+    3. functions
+    4. User-defined functions.
+
+Note  : 
+    all variable names are case-sensitive means if we define :  
+    e.g. $color = "red" ;  
+    and used like $COLOR then value will not get beacause $color & $COLUR treated like different.
+
+==============================================================================================================================================================================
+
+Q.4 What is variables ?  
+    - variables are "containers" used for storing informations.
+    - In PHP , variables are start with "$" sign, followed by name of variable.
+    - PHP is loosely typed language so their is no need to declare data type of the variable.
+    - variable name contain alpha-numeric character and underscore (A-Z, 0-9, _);
+
+==============================================================================================================================================================================
+
+Q.5 PHP Variables Scope? 
+    - there are three scopes in php .
+    1. local -> a variable defined inside a function has local scope & only accessed within a function.
+
+    2. Global  : 
+        - a variable defined outside function has gloabal scope & accessed anywhere in the file.
+        - If you want to access Global Varible and don't want to create local variables  then used global keyword before the variables .
+        e.g.
+                $name = "Anuksha Sharma";        //Global Variable  
+                function global_var()  
+                {  
+                    global $name;  
+                    echo "Variable inside the function: ". $name;  
+                    echo "</br>";  
+                }  
+                global_var();  
+
+
+        - PHP  also stores global variables in $GLOBALS[Index]. this array also accessible within function . 
+        e.g.
+                $num1 = 5;      //global variable  
+                $num2 = 13;     //global variable  
+                function global_var()  
+                {  
+                        $sum = $GLOBALS['num1'] + $GLOBALS['num2'];  
+                        echo "Sum of global variables is: " .$sum;  
+                }  
+                global_var();   
+
+
+        - index holds name of global variable & can be used to update global variables directly.
+
+    3. static : 
+            - Normally , when function is completed/executed , all its variables are deleted . 
+            - sometimes we need not to be deleted . we need it for further job . to do this , use  "static" keyword when you first define varibale.
+            - Static variables exist only in a local function, but it does not free  its memrory after program execution leaves the scope.
+
+        e.g. 
+            function test()
+            {
+                static $ i = 0 ;
+                $i++ ;
+                echo $i ;
+            } 
+            test();
+            test();
+            test();
+
+==============================================================================================================================================================================
+
+Q.6 How Many ways to print output ? 
+    - there are two ways to print output.
+    1. echo  :  
+        - it does not return anything just print the output on screen ; 
+        - it take multiple parameters .
+        e.g.
+             echo "World" ,"Hello" ;
+
+        - it is fatser than print.
+        - it is used with or without parenthesis.
+        - It is language construct not a function.
+
+    2. print
+        - It returns 1 .
+        - It can take only one paramter.
+        e.g.
+            print "World" ;
+
+        - it is used with or without paraenthesis.
+
+==============================================================================================================================================================================
+
+Q.7 array merge and array combine diff?
+
+    Functionality: 
+            - array_merge() is used to merge arrays, combining their elements into a single array.
+            - array_combine() is used to create an associative array using one array for keys and another for values.
+
+    Input Requirements:
+
+            - array_merge() can take multiple arrays as input and does not require them to have the same length.
+            - array_combine() requires exactly two arrays of the same length.
+    Output:
+            - array_merge() returns a merged array, potentially reindexing numeric keys.
+            - array_combine() returns an associative array based on the given keys and values arrays.
+==============================================================================================================================================================================
+
+Q.8  array chunk  :
+
+    - this function split a array into chunk of new arrays.
+    e.g.
+        $a1 = array("balaji","tushar","saurabh","shubham","sandesh","akshay") ;
+        print_r(array_chunk($a1,2));
+
+    o/p :
+        $a1[0] = array("balaji","tushar");
+        $a1[1] = array("saurabh","shubham");
+        $a1[2] = array("sandesh","akshay");
+
+     
+
+==============================================================================================================================================================================
+
+Q.9 combine 2 array in 1 array  (array_merge function)
+
+    $a1 = array("balaji","tushar");
+    $a2 = array("saurabh","shubham");
+    print_r(array_merge($a1,$a2));
+
+==============================================================================================================================================================================
+
+Q.10 Constant : 
+    - Constants are like variables except that once they are defined they cannot be changed or undefined.
+    - Unlike variables, constants are automatically global across the entire script.
+    - To create a constant, use the define() function.
+    e.g. define(name,value,true/false) => define("GREETINGS","Welcome To Sarkar World !");
+        echo GREETINGS ;
+        true : case sensitive  , false :  case insensitive 
+    
+==============================================================================================================================================================================
+
+Q.11  highest 2nd and 3rd salary (query)?
+
+    - 2nd =>  SELECT * FROM `employee` ORDER BY `salary` DESC LIMIT 1 OFFSET 1;
+    - 3rd =>  SELECT * FROM `employee` ORDER BY `salary` DESC LIMIT 1 OFFSET 2;
+
+==============================================================================================================================================================================
+
+Q.12  Find th duplicate records query ?
+
+    - select keyno , count(keyno) as cnt from order group by keyno having (cnt > 1) ;
+
+==============================================================================================================================================================================
+
+Q.13 Loop : 
+    - Loops are used to execute the same block of code again and again, as long as a certain condition is true.
+    - foreach loop works only on array. 
+    - for
+    - while
+    - do while
+
+==============================================================================================================================================================================
+
+ - In PHP 7, type declarations were added . 
+ - To specify strict we need to set declare(strict_types=1);. This must be on the very first line of the PHP file.
+ - PHP 7 also supports Type Declarations for the return statement.
+ - To declare a type for the function return, add a colon ( : ) and the type right before the opening curly ( { )bracket when declaring the function.
+e.g. 
+    function add(int $a ,int $b) : int { => this int is a type of return statement .
+        return $a + $b ; 
+    }
+==============================================================================================================================================================================
+
+Q.14    
+        Input : 
+            $array1=['def1_123','def2_345']; 
+
+        output:
+            $array2=['def1','def2'];
+            $array3=[123,345];
+
+        Ans : 
+            $array1=['def1_123','def2_345']; 
+            $array2 = [];
+            $array3 = [];
+
+            foreach ($array1 as $item) {
+                list($def, $num) = explode('_', $item); // Split the string by '_'
+                $array2[] = $def; // Add the first part to $array2
+                $array3[] = (int)$num; // Add the second part to $array3 as an integer
+            }
+
+            // Output the results
+            print_r($array2); // Outputs: ['def1', 'def2']
+            print_r($array3); // Outputs: [123, 345]
+
+
+==============================================================================================================================================================================
+
+Q.15 Passing Arguments by Reference  :
+    - When a function argument is passed by reference, changes to the argument also change the variable that was passed in. 
+    To turn a function argument into a reference, the & operator is used:
+    e.g. 
+    function test(&$value)
+    {
+        $value += 5 ; 
+    }
+
+    $num = 5 ;
+    test($num) ;
+    echo $num // output will be 10 ;
+
+==============================================================================================================================================================================
+
+Q.16 Array  :  
+    - An array can hold many values under a single name, and you can access the values by referring to an index number.
+    - array type  
+    1. Indexed arrays - Arrays with a numeric index.
+    2. Associative arrays - Arrays with named keys (Key value pair)
+    3. Multidimensional arrays - Arrays containing one or more arrays
+
+    - The count() function is used to return the length (the number of elements) of an array:
+
+    -Sort Functions For Arrays : 
+    a. sort() : sort arrays in ascending order.
+    b. rsort() : sort arrays in descending order
+    c. asort() : sort associative arrays in ascending order, according to the value.
+    d. ksort() : sort associative arrays in ascending order, according to the key.
+    e. arsort() : sort associative arrays in descending order, according to the value.
+    f. krsort : sort associative arrays in descending order, according to the key.
+
+==============================================================================================================================================================================
+
+Q.17 Get And POST method
+    
+    - Get Request Can be cached while POST request never be cached.
+    - Get Request have data length restriction while POST request have no restriction on data length.
+    - Get Request can be Bookmarked while POST Request Can not be bookmarked.
+    - Get Request should never be used when dealing sensetive data.
+    - Get Request are only used for request data while POST request is used for submit data.
+    - Get Request remain in browser history . POST Request do not remain in browser history.
+
+==============================================================================================================================================================================
+
+Q.19 include() & require()
+    - It takes all text/code/markup that exist in the specified file & copies it into uses the include & require statement.
+    - including files is more useful when you want same code in multiple pages of website.
+    
+    both statement behave  same  except one differenence 
+    i.e. when file is not found on specified path then "require" statement gives "fatal error"(E_COMPILE_ERROR) and terminate the script & 
+        include statement gives warning(E_WARNING)  and contiune execution of script
+
+==============================================================================================================================================================================
+
+Q.20 Files :
+
+    1. fopen():  open a file & also used for create a file
+        syntax : 
+            fopen(path_of_file,mode_of_file) ; 
+        e.g.
+            fopen("balaji.txt","r");
+
+    
+    2. fread() : read a opened file.
+        syntax : 
+            fread(path_of_file,how_many_bytes_to_read);
+        e.g.
+            fread("balaji.txt",filesize("balaji.txt"));
+
+
+    3. fclose() : close an opened file .
+        syntax : 
+            fclose(file_descriptor);
+        e.g.
+            $myfile = fopen("balaji.txt","r");
+            fclose($myfile);
+
+
+    4.fgets() : read single line from file.
+        syntax : 
+            fgets(file_descriptor);
+        e.g.
+            $fd =  fopen("balaji.txt","r") or die("File Not Found");
+            echo fgets($fd);
+
+    5. feof() : feof() function checks if the "end-of-file" (EOF) has been reached.
+        e.g.
+            $myfile = fopen("balaji.txt", "r") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                echo fgets($myfile) . "<br>";
+            }
+            fclose($myfile);
+
+    6. fgetc() : fgetc() function is used to read a single character from a file. 
+         e.g.
+            $myfile = fopen("balaji.txt", "r") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                echo fgetc($myfile) . "<br>";
+            }
+            fclose($myfile);
+
+    7. fwrite() : this fun is used for write in the file.
+        synatx : 
+            fwrite(path_of_file,text_to_be_writtten_in_file);
+        e.g.
+            fwrite("balaji.txt","Full Form of PHP is PHP Hypertext pre-processor");
+
+    - if we open file in "w" (write) mode and file does not exist then first file is created and file pointer starts at begining of file.
+==============================================================================================================================================================================
+
+Q.21 enctype = "multipart/form-data"  -  It specifies which content-type to use when submitting the form
+
+==============================================================================================================================================================================
+
+Q.24 What is JSON?
+    - JSON stands for javascript object Notation & is syntax for storing & exchanging  data. 
+    - Since the JSON format is a text-based format, it can easily be sent to and from a server, and used as a data format by any programming language.
+    - The json_encode() function is used to encode a value to JSON format.
+    - The json_decode() function is used to decode a JSON object into a PHP object or an associative array.
+
+==============================================================================================================================================================================
+
+- In a class, variables are called properties and functions are called methods!
+- A class is a template for objects.
+- Object is instance of class.
+- Objects of a class are created using the "new" keyword.
+
+e.g. 
+    class fruit{
+        public  $name ;
+        public $color ;
+        
+        public function set_name($name,$color)
+        {
+            $this->name = $name;
+            $this->color = $color ;
+        }
+        
+        public function get_name_get_color()
+        {
+            return "Name is : ". $this->name . " & Color is : " . $this->color ;
+        }
+    }
+ 
+    $apple = new fruit() ;
+    $banana = new fruit() ; 
+    $apple->set_name("Apple","red");
+    echo "Apple Object </br>" ;
+    echo  $apple->get_name_get_color() ;
+
+- The $this keyword refers to the current object, and is only available inside methods.
+
+==============================================================================================================================================================================
+
+Q. 26 Destructor : 
+
+    - This Function Starts with two underscores followed by destruct keyword .
+    e.g. 
+        function __destruct()
+        {
+            // code for de-initilize the priperties.
+        }
+    - this function will get called automatically at the end of script.
+
+==============================================================================================================================================================================
+
+Q. 27 Access Modifiers  : 
+
+    - Properties & Methods can have access modifiers which control where they can be accessed.
+    - There are three types of Access Modifiers :
+
+    a. public : 
+        - This is default Access modifier . 
+        - when we declare property / Method using prefix "public" then property and method accessed from anywhere. 
+
+    b. protected : 
+        - Property and method declared as 'Protected' can only accessible   within class & inheriting classes (subclasses) .
+        - They are not accessible from outside the class
+
+    c. private :  
+        - Members declared as 'private' can only be accessed within the class that defines them. 
+        - They are not accessible from outside the class or from subclasses.
+
+Note  : if we declare "method" without Access modifier then those "method" are by default came under "public" Access Modifiers.  
+
+==============================================================================================================================================================================
+
+Q. 28  what is Inheritance ? 
+    - It is OOPS concept that allows one class to inherit properties and methods from another class.
+    - The child class will inherit all the public and protected properties and methods from the parent class this is called inheritance .
+    - The inherited class defined with "extends" keyword.
+    e.g . 
+    class fruit 
+    {
+        public $name ;
+        public $color ;
+
+        function get_name()
+        {
+            return $this->name ;
+        }
+        function set_name($name)
+        {
+            $this-> name = $name ;
+        }
+    }
+
+    class strawberry extends fruit
+    {
+        function __construct($name)
+        {
+            $this->set_name($name) ;
+            echo $this->get_name();
+        }
+    }
+
+    $straw = new strawberry("Apple"); 
+
+
+- The final keyword can be used to prevent class inheritance or to prevent method overriding.
+    e.g. 
+        final class Fruit {
+        // some code
+        }
+
+        // will result in error
+        class Strawberry extends Fruit {
+        // some code
+        }
+
+- Cannot override final method
+    e.g. 
+        class fruit {
+            final function intro()
+            {
+                // some code 
+            }
+        }
+
+        class strawberry extends fruit
+        {
+            
+            function intro() // Not Allowed
+            {
+                 // some code 
+            }
+        }
+
+Note : PHP only supports single inheritance: a child class can inherit only from one single parent.
+
+==============================================================================================================================================================================
+Q. Singleton class In Laravel :
+    - A singleton class is a class that can have only one object (an instance of the class) at a time. 
+    - This is useful when exactly one object is needed to coordinate actions across the system
+    - Example of singleton class is 'Log' Facade    
+
+
+==============================================================================================================================================================================
+
+Q.29  Class Constant : 
+
+    - Constant can not be changed once it is declared.
+    - Constant define using const keyword .
+    e.g.
+      const NAME = "balaji bhise" ;
+    - Constants are case-sensetive . 
+    - it is recommended to name of constant in all uppercase letter.
+    - we can access constant outside class  using scope resolotion operator .
+    - It is Class-level member that's why we can't access memeber using '$this' keyword.
+    - Class Level memeber aceess using 'self' keyword and Instance Level memeber access using '$this' keyword.
+    e.g 
+        class_name :: const_variable_name ; // fruit :: name ;
+    
+    - we can access a constant from inside the class by using the self keyword followed by the scope resolution operator (::) followed by the constant name
+    e.g.
+        class fruit{
+            const BALAJI = "Balaji Bhise Sarkar" ;
+            function test()
+            {
+                echo self :: BALAJI ;
+            }
+        }
+
+==============================================================================================================================================================================
+
+Q.30  Abstract Class & Method ? 
+
+    - Abstract classes & method are when the parent class have named method but need its child class to Give the implemention. 
+    - Abstract class have at least one abstract menthod . abstract method is a method that is declared but not implemented in a code.
+    - abstract class or method defined with "abstract" keyword.
+
+    e.g. 
+
+        abstract class fruit{                        // abstract class
+            abstract function test();                // abstract method
+            abstract function test2();                // abstract method
+        }
+
+    when child class inheriting abstract method then those method have same signature line i.e.  same method name , same arguments & also same / less access modifiers .
+
+==============================================================================================================================================================================
+
+Q.30   Interfaces vs. Abstract Classes
+
+    - Interface can not have properties , abstract class  can have .
+    - In Interface, All method must be public& In abstract class , method is  public or protected.
+    - All Methods in interface are abstract so they can not be implemented in code & abstract keyword is not neccessary .
+
+==============================================================================================================================================================================
+
+Q.31  What is Interface ? 
+
+    - An interface is a abstract class that defines a blueprint of methods that must be implemented by any class that implements it .
+    - An interface is defined using the interface keyword, followed by the name of the interface
+    - To implement interface use keyword "implements".
+    - Interfaces only define the method signatures, including the method name, return type, and parameters. 
+    - They do not provide any implementation for the methods
+
+    e.g. 
+
+        interface animal{
+            public function name();
+            public function color() ;
+        }
+
+        class test implements animal
+        {
+            public function name()
+            {
+                // some code 
+            }
+            public function color()
+            {
+                // some code 
+            }
+        }
+
+        $testing =  new test();
+        $testing->name() ;
+
+==============================================================================================================================================================================
+
+- PHP only supports single inheritance: a child class can inherit only from one single parent.
+- if we want to inherit multiple behaviours for that traits come in picture .
+
+Q.32 Traits .
+
+    - A trait is a collection of methods that can be used by multiple classes 
+    - Traits are defined using the trait keyword, followed by the name of the trait .
+    - traits are used in class using 'use' keyword followed by 'trait name'
+
+    e.g. 
+        trait hello {
+            public function msg()
+            {
+                echo "Hello msg" ;
+            }
+        }
+
+        class demo{ 
+            use hello ; 
+        }
+
+        $demo  = new demo();
+        $demo->msg();
+
+==============================================================================================================================================================================
+
+Q.33 Static Methods  & Static property ?
+
+    - a static method is a method that belongs to a class, rather than an instance of the class
+    - Static methods can be called directly - without creating an instance of the class first.
+    - static methods declared with "static" keyword
+
+    e.g.
+
+            class balaji {
+                public static function staticMethod() 
+                {
+                    echo "Hello World!";
+                }
+            }
+
+            balaji :: staticMethod();
+
+    - To call static method in child class , use "parent" keyword at the place of class name.
+
+    e.g.
+
+        class bhise extends balaji
+        {
+            public function test1()
+            {
+                parent :: staticMethod();
+            }
+        }
+
+    - Static property have same functionality like static method.
+
+==============================================================================================================================================================================
+
+1. OOPS concept :
+
+    - OOPS stands for object oriented programming .
+    - It is Programming model organized around object rather than action and data .
+    - Class and Object has two main aspects of object oriented programming.
+    - class is a template for object and object is instance of class.
+    - inheritance , polymorphism , Encapsulation , data abstraction
+
+=========================================================================================================================================
+
+2. What is inheritance , polymorphism , Encapsulation and data abstraction ?
+
+    a. Inheritance :
+
+        - Inheritance is a mechanism to reusing the existing functionality .
+        - It allows us to inherit the properties of existing class(base class) to new class(derived class).
+        e.g.
+            class test
+            {
+                public function test1()
+                {
+                    echo "In  Test1 Function";
+                }
+            }
+            class testing extends test
+            {
+                public function test2()
+                {
+                    echo "In Test2 Function" ;
+                }
+            }
+    b. polymorphism :
+
+            - It is an OOP's Concept that allows an object to take on multiple forms.
+            e.g.
+                class MusicPlayer {
+                    function play() {
+                        echo "Playing music...\n";
+                    }
+                }
+
+                class MP3Player extends MusicPlayer {
+                    function play() {
+                        echo "Playing MP3 music...\n";
+                    }
+                }
+
+                class WAVPlayer extends MusicPlayer {
+                    function play() {
+                        echo "Playing WAV music...\n";
+                    }
+                }
+
+                $mp3Player = new MP3Player();
+                $wavPlayer = new WAVPlayer();
+
+                $mp3Player->play(); // Output: Playing MP3 music...
+                $wavPlayer->play(); // Output: Playing WAV music...
+ 
+    c. Encapsulation :
+
+        - It is OOP's Concept that binds together the data and the methods that manipulate that data, and
+             keeps both safe from outside interference and misuse
+        - encapsulation is achieved by using classes and objects.
+        - Benefits of encapsulation is 
+            1. Data hiding(Hide Internal implementation Detils )
+            2. Code Reusablity
+
+
+   
+       
+
+
+=============================================================================================================================================
+
+3. Code for reverse string in without string reverse function ?
+
+    $str = "Balaji";
+    $revStr = "";
+    for($iCounter = strlen($str) -1 ; $iCounter >= 0 ; $iCounter--)
+    {
+        $revStr .= $str[$iCounter] ;
+    }
+
+    echo $revStr;
+
+=============================================================================================================================================
+
+5. If we have 50 records in table and we want to paginate it by 10 ( 5 pages) , then how will you find records from third page ? --query
+
+-  SELECT * FROM table_name LIMIT 10 OFFSET 20;
+
+=============================================================================================================================================
+
+6. what is pagiantion ?
+
+    - Pagination is a mechanism in Laravel that allows you to divide a large dataset into smaller
+    - In Laravel, pagination is  used to limit the number of records displayed per page 
+     and to provide navigation links to move between pages
+
+=============================================================================================================================================
+
+7. what is composer ?
+
+    - composer is tool for dependency manager in php that manages  dependencies of php software and required libraries.
+    - Composer helps you to easily integrate external packages into your PHP projects 
+    - composer runs through command line.
+    - The main purpose of composer is to install dependencies or libraries for an application.
+    - Install libraries in 'vendor' directory which is present in project directory.
+
+=============================================================================================================================================
+
+8. what is migration and its use ?
+
+    - migration Provides a way for easily sharing the schema of the database.
+    - It allows developers to create, modify, and delete database tables, columns, and relationships in a controlled and reversible manner.
+    - Migration are used to create database schemas in laravel.
+    - All the migration files we create using the artisan command are located at database/migrations directory.
+    - when we run "PHP artisan migrate" then database schemas is created.
+    - when we run "php artisan migrate:rollback" then latest Migration will be rollback.
+    - if we want to rollback all migrations then run "php artisan migrate:reset" 
+    - To Create Migration use below command :
+    e.g.
+        php artisan make:migration create_employees_table ;
+
+=============================================================================================================================================
+
+9. what is mvc ?
+
+    - MVC is an architecture design pattern that helps to develop web application faster.
+    - MVC stands for modal-view-controller .
+    - Laravel Framework follows MVC architecture.
+    - Modal : A modal handles data used by web application.
+    - View : a view helps to display data to the user
+    - Controller : A Controller interacts with modal to create the data for view
+
+=============================================================================================================================================
+
+
+11.difference between echo and print
+
+    - Echo has no return value while Print returns an integer which is 1.
+    - Echo is faster than print.
+    - echo can take multiple argument , while print take only one argument.
+
+=============================================================================================================================================
+
+
+15. what is ssl ? how to apply ssl to website ?
+
+    - SSL stands for secure socket layer.
+    - It is a digital a certificate that authenticates a website's identity and enables an encryption connection.
+    - In short SSL keep internet connection secure and prevnts criminals form reading or modifying information transformed between two systems.
+
+    - at the time of website hosting you can apply ssl certificate.
+
+=============================================================================================================================================
+
+16.what is primary key / foreign key --- difference ?
+
+    - Primary key is the default indexing for table.
+    - only one primary key for table.
+    - Primary key is unique and not null.
+    - primary key is used to ensure that data in specific column is unique.
+
+    - foreign key is used to link one or more tables together.
+    - foreign key is field in one table that refers to the primary key of another table.
+
+    Differnece : 
+
+        - Only one primary key is allowed while multiple foreign key allowed in table.
+        - You can not delete record from parent table while we can delete entry from child table.
+        - it does not allow NULL /duplicate value while it allow null / duplicate value.
+=============================================================================================================================================
+
+    - 
+17. default indexing key in table .
+
+    - Primary key is the default indexing in a table.
+
+=============================================================================================================================================
+
+18. what is indexing ?
+
+   - indexes are used to retrive data more quickly rather than other.
+   - without index mysql must begin with first row and then read through the entire table to find the relevant rows.
+=============================================================================================================================================
+
+19. 5 string function .
+
+    a. strlen => returns the length of string.
+    b. str_replace => find the string and replace it.
+    c. strpos => It returns the position of the first occurrence of the substring.
+    d. strrev => returns reverse string.
+    e. strtolower => returns the string in lowercase.
+    f. strtoupper => returns the string in uppercase.
+
+=============================================================================================================================================
+
+
+20.what is controller and model ?
+
+    - Controller is used for write business logic of your application.
+    - You can create many controller as your application needs.
+    - using below command you can create controller :
+    e.g. 
+        php artisan make:controller TestController.
+
+    - Eloquent provides an extra layer to interact with tables by creating a corresponding model which is used to interact with that table.
+    - using below command to create a model.
+    e.g.
+        php artisan make:model Admin 
+=============================================================================================================================================
+
+21. what is relational database management ?
+
+    - RDBMS is a program used to manage relational database
+    - RDBMS uses sql queries to access data in the database. 
+
+=============================================================================================================================================
+
+22. constructor in php ?
+
+    - constructor is used to initialize an obejct properties upon creation of the object.
+    - constructor is called implicitly at the time of object creation .
+    - Parent constructor is not called implicitly, if the child class defines constructor.
+    - In order to run parent constructor you must call explicitly in child constructor like Parent::__construct();
+    - constructor name start with two underscore and follwed by construct keyword.
+    e.g.
+
+    class demo
+    {
+        function __construct()
+        {
+            echo " In Constructor " ;
+        }
+    }
+
+=============================================================================================================================================
+
+23. Can we use multiple database in laravel ? how can we differentiate it ? 
+
+    - Yes .
+    - Define connection in config/database.php file and use this using connection() method.
+=============================================================================================================================================
+
+24. can we assign index to varchar column ?
+    - Yes.
+    - You can assign index to all type except 'BLOB' and 'TEXT'
+
+=============================================================================================================================================
+
+25. Can we create two classes of same name in php ?
+
+    - No. For that Namespace come in picture.
+=============================================================================================================================================
+
+26. session 
+
+    - session is used to store and pass information of the user from one page to another temporarily until the user close the website.
+    - unlike a cookie , information not stored on user's computer.
+    - session technique is widly used  in shopping website where we need to store and pass the cart inforamtion.
+    e.g. username , product code , product name , product price.
+
+    - When you work with Application , you open it , do some changes And close it . The Computer Knows who you are , when you open & when you close . 
+      But on the Internet their is one problem . Web server does not know who you are what you do beacuse HTTP Address does not maintain state. 
+    - Session variable solve this problem by storing user information to be used across multiple pages last until the user closes the browser.
+    - Session variable hold information about one single user, and are available to all pages in one application.
+    - A session is started with the session_start() function.
+
+Note : session variables are not passed individually to each new page, 
+       instead they are retrieved from the session we open at the beginning of each page (session_start()).
+
+    - In Laravel , session configuration is stored in config/session file.
+    - In laravel , sessions files are stored in storage/framework/sessions directory.
+
+    set, get , delete session in Laravel
+
+        - Session::put('key','value');
+        - Session::get('key');
+        - Session::flush();
+
+    -
+
+============================================================================================================================================
+27. default timing of session in PHP And In Laravel ?
+
+    - IN PHP => 24 minutes
+    - IN Laravel => 120 minutes / 2 hr.
+============================================================================================================================================
+28. Cookie :
+
+    - cookie is a small piece of information which is stored on client browser. 
+    - It is used for recongnize the user.
+    - Cookie is created at server side and store on client browser.
+    - each item when client sends request to the server , cookie is embedded with request such way cookie is received at server side.
+    - If you set the expiration date in past, cookie will be deleted.
+    - setcookie() : it is used for creating a cookie.
+    syntax : 
+        setcookie(name, value, expire, path, domain, secure, httponly); 
+        
+============================================================================================================================================
+
+29. how to set , get , delete cookie in Laravel ?
+
+    - set :
+        Cookie::queue('name','value',minutes);
+
+    - get 
+        $_COOKIE['name']; or Cookie::get('name') ;
+
+    - delete
+            Cookie::forget('name')
+
+=============================================================================================================================================
+30. What is namespace ?
+
+=============================================================================================================================================
+
+36. difference between delete and soft delete 
+
+    - the delete statement delete data from datebase permanantly.
+    - with the soft delete design pattern, you add bit column like IsDeleted , IsActivated to the table
+        and instead of deleting rows , you flip the bit column
+======================================================================================================================
+
+37. what is Eloquent ORM ? 
+
+    - Eloquent is an object relational mapper that is by default included in laravel Framework.
+    - ORM is techinique for mapping obeject-oriented systems to relational database.
+======================================================================================================================
+
+38. what is auth ? 
+
+    - Authentication is the process for identifying the client credentails.
+    - In web application, authentication is managed by session 
+    - Laravel Includes built in authentication and session services which are accessed via the auth and session facades.
+======================================================================================================================
+
+39. what is middleware ? 
+
+    - Middleware provides mechanisam for inspecting and filtering http request entering your application.
+    - To Create middleware use command => php artisan make:middleware middleware_name 
+    - Middleware acts as between a request and response.
+
+ 
+==============================================================================================================================================================================
+42.REST API 
+
+    - API is a way for two or more computer programs to communicate with each other.
+    - REST API is an API that allows programmers to send and receive information from other programs using HTTP Protocol commands such as GET, POSt etc.
+    - API stands for Application Programming Interface.
+
+
+==============================================================================================================================================================================
+ 
+43. commonly used artisan commands 
+
+    a. php artisan list
+    b. php artisan make:model User
+    c. php artisan optimize:clear
+    d. php artisan make:controller UserController
+    e. php artisan up
+    f. php artisan down
+    g. php artisan inspire
+    h. php artisan make:middleware Checkasm
+    i. php artisan clear:cache
+==============================================================================================================================================================================
+
+ 
+45. what is rollback ?
+
+    - It is a process of returning  a database to it's previous state.
+    - what a ever operation performed that will be cancelled on rollback command.
+==============================================================================================================================================================================
+
+46. what is route ? 
+
+    - The Route is way of creating URL in your application.
+    - In Laravel All route files are in Route directory. 
+==============================================================================================================================================================================
+
+47. composer command ?
+
+    - composer require create-project laravel/laravel PrjName
+    - composer update
+    - composer install
+    - composer require maatwebsite/excel 
+
+    - You can view all composer commands => 'composer list' => run this command on command-line. 
+
+==============================================================================================================================================================================
+
+48. how to install new package ? 
+
+    - using composer command you can install new package
+    e.g.
+        composer require maatwebsite/excel 
+
+==============================================================================================================================================================================
+
+Q.1 What is csrf token ? 
+
+    - It is secure random token and used to prevent CSRF attack.
+    - This token is used to verify that the authenticated user actually making a request to the application.
+    - Laravel automatically genrates CSRF token for each active user session managed by application.
+==============================================================================================================================================================================
+
+Q.2 What is Facades ?
+
+    - a Facade is a class that provides a static interface to a class that is available in the IoC (Inversion of Control) container.
+    - Laravel Facade serve as 'static proxies' to underlying classes in Service container.
+==============================================================================================================================================================================
+
+Q.3 What is template engine used in laravel ?
+
+    - blade is a template engine used in laravel . 
+    - the blade gives the ability to use mustache-like syntax with plain PHP & gets compiled into plain php 
+      and cached until any other changes happens in blade file.
+
+==============================================================================================================================================================================
+
+
+Q.5 What is artisan ?
+
+    - artisan is a tool in laravel to help the developer to build the application.
+    - Artisan is a name of command-line interface included with Laravel .
+    - It Provides number of helpful commands for your application while developing your application.
+    - to list all command , run command on command line  .
+        php artisan list
+
+==============================================================================================================================================================================
+
+Q.6 How To define environment  variable in laravel ? 
+
+    - The environment variable can be defined in .env file present in project directory.
+
+==============================================================================================================================================================================
+
+Q.7 How To Put website on maintenece mode ? 
+    - Using Below command we can put website on maintenece mode.
+    php artisan down .
+
+    - and we can put the application again on live using below command.
+    php artisan up
+
+==============================================================================================================================================================================
+
+Q.8 Why We put website on maintenece mode ? 
+    - It is Used to put a maintenece page to customers & under the hood , we can do software updates , bug fixes etc.
+
+==============================================================================================================================================================================
+
+Q.9. what are routes are available ?
+
+    -Below are the four default route files in the routes folder in Laravel:
+
+    a. web.php : For Registering web routes.
+    b. api.php : For Registering API Routes.
+    c. console.php : For Registering Closure-based console Commands.
+    d. channel.php : For Registering all your event brodcasting channels that your application supports.
+
+==============================================================================================================================================================================
+
+Q.12 What are seeders in Laravel ? 
+
+    - seeders in laravel are used to put data in database automatically . 
+    - After running migrations to craete tables , we can run "php artisan db:seed" to run the seeder to populate  the database tables.
+    - using below command we can create seeder.
+    php artisan make:seeder EmployeeSeeder
+
+==============================================================================================================================================================================
+
+
+2. difference in migration rollback and migration fresh command 
+    - Rollback is used for undo the migration while fresh is used to recreate the migration table.
+==============================================================================================================================================================================
+
+3.what is ServiceProvider  ?
+
+    - Service Provider are the central place for your application.
+    - All of the service provider clasess are written in providers array which are included in config/app.php file
+    - All of Laravel core services are bootstrapped via service provider.
+    - bootstrapped => Registering things , including Registering service container, event listeners , middleware , even route.
+==============================================================================================================================================================================
+
+4. what is tinker ?
+
+    - Tinker allows you to interact with your entire Laravel Application on the command line 
+    - including eloquent models , job , event and more. 
+    - php artisan tinker => using this command to enter tinker environment.
+
+==============================================================================================================================================================================
+7.how to get current route in laravel ?
+
+    1.use Illuminate\Support\Facade\Route ;
+    2. Route::currentRouteName() ;
+
+==============================================================================================================================================================================
+
+8.what is use of web.config file ?
+
+    - this file is used for URL rewriting on iis server.
+
+=============================================================================================================================================================================
+
+
+Life Cycle Overview :
+
+    - First Step :
+            - The Entry Point for all request to a Laravel Application is the public/index.php File.
+            - All Request are directed to this file by web server(Apache/Nginx) Configuration.
+            - The index.php doesn't have too mach code rather it is a starting point for loading the rest of framework.
+
+    - HTTP / Console Kernels :
+            - Next , The incoming request is sent to Http Kernel or console Kernel , depending on
+              the type of request that is entering the application.
+            - These two kernal serve as the central location that all request flow through.
+
+    - Service Providers :
+            - This is responsible for bootstrapping all of the framework's various components, 
+              such as database , queue , validation and routing components, 
+            - All of the Service Providers for the application are configured in th config/app.php configuration file's Providers Array.
+
+    - Routing : 
+            - One of the most important Service Provider in your application is the App\Providers\RouteServiceProvider .
+            - This Service Provider loads the route files contained within your application's route Directory.
+
+    - Finishing Up :
+            - Once the route or controller returns the response , the response will travel back outward through
+              the route middleware , giving the application a chance to modify or examine the outgoing response.
+            - Finally , once the response travel back through the middleware , The Http kernal handle() method
+              return the response object and index.php file calls the send() method on the returened response.
+
+==============================================================================================================================================================================
+
+Configuration :
+
+        - All of the configuration files for the laravel framework are stored in config directory.
+        - These configuration files allow you to configure things like database connection information,
+          your mail server information as well as other core configuration values such as your application timezone and encryption key.
+
+==============================================================================================================================================================================
+
+
+1. What is MySQL?
+
+    - MySQL is a relational database management based on structured Query language ,
+    - It is popular lanaguge for accessing and managing records in the database.
+    - it is open source and  free software under the GNU Lincense.
+    - It is supported by oracle company.
+    - MySQL is ideal for both small and large Application.
+    - MySQL follows the working of client-server architecture.
+    - MySQL was first released in 1995.
+
+==============================================================================================================================================================================
+
+2. Who Uses MySQL?
+
+    - Huge websites like Facebook, Twitter, Airbnb, Booking.com, Uber, GitHub, YouTube, etc.
+    - Content Management Systems like WordPress, Drupal, Joomla!, Contao, etc.
+
+==============================================================================================================================================================================
+
+
+4. What is  Table?
+
+    - Table is used for organize data in the form of row and column and used for both storing and displaying records in the stucture format.
+    - Table creation command requires three things :
+        a.  Name of the Table
+        b.  Name of the fields
+        c.  Definition of each field.
+
+    - SHOW TABLES => for displaying all tables present in the selected database.
+    - DESC tbl_name => for displaying structure of the table.
+    - SHOW TABLES FROM db_name => for displaying tables from other database.
+
+==============================================================================================================================================================================
+
+5. What is a Relational Database?
+
+    - A relational database defines database relationships in the form of tables. 
+    - The tables are related to each other - based on common data to each.
+
+    e.g 
+
+    tbl_student         tbl_student_course              tbl_course
+
+    id    name          id  stud_id   cour_id           id      course
+    1     Balaji        1     1         2               1       MySQL
+    2     Shubham       2     1         1                2       C++
+==============================================================================================================================================================================
+
+6. What is SQL?
+
+    - SQL is standard language for dealing with relational database.
+    - SQL is used to insert , update , delete and Search Database Records.
+    - SQL keywords are NOT case sensitive i.e. 'select' is the same as 'SELECT'.
+
+==============================================================================================================================================================================
+
+
+8. WHERE Clause ?
+
+    - where clause is used to filter records.
+    - It is used to extract only those records that a fulfill a specified condition.
+
+    syntax : 
+        SELECT column1, column2 FROM table_name WHERE condition;
+
+Note : where clause used with only select , update and delete statement .
+==============================================================================================================================================================================
+9. How to Test for NULL Values?
+
+    - It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+    - We will have to use the IS NULL and IS NOT NULL operators instead.
+    syntax :
+        SELECT column_names FROM table_name WHERE column_name IS NULL;
+==============================================================================================================================================================================
+
+10. UPDATE Statement
+
+    - update statement is used to modify the existing records in the table.
+    synatx 
+        UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+
+Note : 
+    - Be Careful when updating records in a table. notice the where clause in the update statement. 
+    - The where clause specifies which record that should be updated . 
+    - If you omit the where clause , all records in the table will be updated.
+    
+==============================================================================================================================================================================
+
+11. Delete Statement
+
+    - Delete Statement is used to delete existing record in the table.
+    - If You Omit the where clause , then all records will be deleted.
+    synatx :
+        DELETE FROM table_name WHERE condition;
+==============================================================================================================================================================================
+
+12.  LIMIT Clause
+
+    - The LIMIT clause is used to specify number of records to return.
+    - It is useful on large tables with thousands record. Returning a large number of records can impact on performance.
+    syntax:
+        SELECT column_name(s) FROM table_name WHERE condition LIMIT number;
+    e.g.
+        SELECT * FROM Customers LIMIT 3; 
+==============================================================================================================================================================================
+
+13. MIN() and MAX() Functions
+
+    - Min() Function return smallest value of the selected column.
+    synatx : 
+        SELECT MIN(column_name) FROM table_name WHERE condition;
+    e.g. 
+        SELECT MIN(Price) AS SmallestPrice FROM Products;
+
+
+    - Max() Function return largest value of the selected column.
+     synatx : 
+        SELECT MAX(column_name) FROM table_name WHERE condition;
+    e.g.
+        SELECT MAX(Price) AS LargestPrice FROM Products;
+ 
+==============================================================================================================================================================================
+
+14. COUNT(), AVG() and SUM() Functions
+
+    - COUNT() Function returns the number of rows that matches a specified criterion.
+    - NULL values are not counted.
+    synatx :
+        SELECT COUNT(column_name) FROM table_name WHERE condition;
+    e.g.
+        SELECT COUNT(ProductID) FROM Products;
+
+    - AVG() Function returns the average value of 'NUMERIC' column
+    - NULL values are ignored.
+    synatx :
+        SELECT AVG(column_name) FROM table_name WHERE condition;
+    e.g.
+        SELECT AVG(Price) FROM Products;
+
+    - SUM() Function returns the Total sum of 'NUMERIC' column
+    - NULL values are ignored.
+    synatx :
+        SELECT SUM(column_name) FROM table_name WHERE condition; 
+    e.g.
+        SELECT SUM(Price) FROM Products;
+
+==============================================================================================================================================================================
+
+15. LIKE Operator
+
+    - LIKE Operator is used in where clause to search for specified pattern in column . 
+    - There are two wildcards charchter often used in conjuction with Like Operator.
+        1. The percent sign (%) represents Zero, One or multiple charcters.
+        2. The Underscore sign (_) represents single charcter.
+
+    - The percent sign and Underscore sign  also be used in combination.
+
+    e.g.
+        a. WHERE CustomerName LIKE '_r%'        => Finds any value that have 'r' in the second position.
+        b. WHERE CustomerName LIKE 'a%'         => Finds any value that start with 'a' .
+        c. WHERE CustomerName LIKE 'a_%'        => Finds any value start with a and at least 2 charcters in length.
+
+    - A wildcard character is used to substitute one or more characters in a string.
+
+==============================================================================================================================================================================
+
+16. IN Operator
+
+    - IN Operator allows you to specify multiple values in a 'where' clause.
+    - IN Operator is a shorthand for multiple 'OR' Condition.
+
+    synatx : 
+        SELECT column_name(s) FROM table_name WHERE column_name IN (value1, value2, ...);
+    e.g.
+        SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');
+
+==============================================================================================================================================================================
+
+17. BETWEEN Operator
+
+    - The BETWEEN Operator selects values within the range . The values can be Number , text or dates .
+    - The BETWEEN Operator is inclusive : begin and end values are included. 
+    synatx :
+        SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2;
+    e.g 
+        SELECT * FROM Products WHERE Price BETWEEN 10 AND 20;
+==============================================================================================================================================================================
+
+18. Aliases
+
+    - An Alias is created with the 'AS' keyword.
+    - It is used to give temporary name for table , column in a table .
+    - It is often used to make columns names more readable.
+    - An Alias is exist only duration of that query. 
+    syntax :
+        SELECT column_name AS alias_name FROM table_name as table_Alias_name;
+    e.g.
+        SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers as cust;
+
+==============================================================================================================================================================================
+
+19. Joins
+
+    - The Join clause is used to combine rows from two or more table , based on related column between them.
+    e.g.
+        SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+==============================================================================================================================================================================
+
+20.Types of Joins in MySQL :
+
+    1. INNER JOIN : Returns records that have matching values in both tables.
+    syntax : 
+        SELECT column_name(s)  FROM table1 INNER JOIN table2 ON table1.column_name = table2.column_name;
+    e.g.
+        SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+    - If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    2. LEFT JOIN  : Returns all records form left table and the matched records from the right table.
+    syntax : 
+        SELECT column_name(s)  FROM table1 LEFT JOIN table2 ON table1.column_name = table2.column_name;
+    e.g.
+        SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders LEFT JOIN Customers ON Orders.CustomerID=Customers.CustomerID; 
+
+    - The Left join keywords return all records from left table even if there are no matches in the right table.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    3. RIGHT JOIN : Returns all records from right table and the matched record from the left table.
+    syntax : 
+        SELECT column_name(s)  FROM table1 RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+    e.g.
+        SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders RIGHT JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+    - The right join keywords return all records from right table even if there are no matches in left table.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    4. CROSS JOIN : Returns all records from both table. 
+    syntax : 
+        SELECT column_name(s) FROM table1 CROSS JOIN table2;
+    e.g.
+        SELECT Customers.CustomerName, Orders.OrderID FROM Customers CROSS JOIN Orders;
+
+    - cross join can potentially return very large result set.
+    - if you add a 'where' clause , the cross join will produce the same result as the 'inner join' clause.
+
+    e.g.
+        SELECT Customers.CustomerName, Orders.OrderID FROM Customers
+        CROSS JOIN Orders WHERE Customers.CustomerID=Orders.CustomerID;
+==============================================================================================================================================================================
+
+21. UNION Operator 
+
+    - The UNION Operator is used to combine the result-set of two or more 'select' statement . 
+    - Every 'select' statement within 'UNION' must have same number of columns .
+    - The Columns must also have similar data Types.
+    - The Columns in every 'select' statement must also be in the same order.
+    - The UNION operator selects only distinct values by default. 
+    - To allow duplicate values , Use 'UNION ALL'
+    synatx :
+        SELECT column_name(s) FROM table1
+        UNION
+        SELECT column_name(s) FROM table2;
+
+==============================================================================================================================================================================
+
+22. GROUP BY Statement
+
+    - The GROUP BY statement groups rows that have the same values into summary rows .
+    - It is  used with aggregate Function ( Count(), MIN(), MAX() , SUM(), AVG()) to group the result set by one or more columns.
+    synatx :
+        SELECT column_name(s) FROM table_name WHERE condition GROUP BY column_name(s) ORDER BY column_name(s);
+    e.g. 
+        SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country;
+==============================================================================================================================================================================
+
+23. Having Clause 
+
+    - Having clause used to fetch data/values from the groups accrording to the given condition.
+    - having clause always used with group by statement
+    - Having clause used to filter groups.
+    - Having clause was added because where clause is not used with aggregate function.
+    syntax :
+        SELECT column_name(s) FROM table_name GROUP BY column_name(s) HAVING condition ORDER BY column_name(s);
+    e.g. 
+        SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID) > 5;
+
+==============================================================================================================================================================================
+
+24. Exist Operator :
+
+    - The Exist operator is used to test for the existence of any record in a subquery.
+    - It returns true if the subquery returns one or more records.
+    syntax :
+        SELECT column_name(s) FROM table_name WHERE EXISTS (SELECT column_name FROM table_name WHERE condition);
+    e.g.
+        SELECT SupplierName FROM Suppliers WHERE EXISTS 
+        (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+==============================================================================================================================================================================
+
+25. INSERT INTO SELECT Statement
+
+    - The insert into select statement copies data from one table and inserts it into another table.
+    - The insert into statement requires that the data type in source  and target tables matches. 
+
+Note : The existing records in the target table are unaffected.
+
+    syntax :
+        INSERT INTO table2 SELECT * FROM table1 WHERE condition;
+    e.g.
+        INSERT INTO Customers (CustomerName, City, Country)
+        SELECT SupplierName, City, Country FROM Suppliers;
+
+==============================================================================================================================================================================
+
+26. CASE Statement
+
+    - The case statement goes through condition returns a value when the first condition is met(like if-then-else statement), 
+    - so once a condition is true , it will stop reading the result. if no condition are true , it returns the value in the else clause .
+    - if there is no else part and no condition are true , it returns NULL.
+
+    synatx : 
+        CASE
+            WHEN condition1 THEN result1
+            WHEN condition2 THEN result2
+            WHEN conditionN THEN resultN
+            ELSE result
+        END;
+    e.g.
+        SELECT OrderID, Quantity,
+        CASE
+            WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+            WHEN Quantity = 30 THEN 'The quantity is 30'
+            ELSE 'The quantity is under 30'
+        END AS QuantityText FROM OrderDetails;
+
+==============================================================================================================================================================================
+
+27. IFNULL() Function
+
+    - The MySQL IFNULL() Function  return alternative value if expression is NULL.
+    e.g.
+        SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0)) FROM Products;
+
+==============================================================================================================================================================================
+
+28. Comments
+
+    - Comments are used to prevent the execution of SQL Statement.
+
+    a. Single Line Comment :
+        - Single Line Comment Starts with -- .
+        e.g.
+            i .  -- SELECT * FROM Customers; : -> This statement will not be execute . 
+            ii.  SELECT * FROM Customers -- WHERE City='Berlin';
+
+    b. Multi Line Comment :
+        - Multi line comment star with /*  and end with */  .
+        e.g.
+            /*Select all the columns of all the records in the Customers table:*/
+                SELECT * FROM Customers;
+
+==============================================================================================================================================================================
+
+29. CREATE DATABASE Statement
+
+    - 'Create database' statement is used to create a new database.
+    syntax : 
+        create database db_name ;
+
+    - After creaing database to check list of database using below command .
+        show databases ;
+
+==============================================================================================================================================================================
+
+30 . DROP DATABASE Statement :
+
+    - This statement is to drop an existing  SQL Database .
+    synatx : 
+        drop database db_name ; 
+
+==============================================================================================================================================================================
+
+31. CREATE TABLE Statement : 
+
+    - This statement is used to create a new table in database.
+    - The column parameters specify the name of the column of the table.
+    - the datatype parameter specify the type of data the column can hold (e.g. integer , varchar , date etc.)
+    syntax : 
+        CREATE TABLE table_name (
+            column1 datatype,
+            column2 datatype, 
+            column3 datatype
+        );
+
+    e.g.
+        CREATE TABLE Persons (
+            PersonID int,
+            LastName varchar(255),
+            FirstName varchar(255),
+            Address varchar(255),
+            City varchar(255)
+        );
+
+==============================================================================================================================================================================
+
+32. drop table statement :
+
+    - Drop table statement is used for deleting all data along with whole table structure permanently from database.
+    - when you want delete multiple table, In that case we have to use table name and seprate them using comma operator.
+    e.g.
+        drop table tbl1 , tbl2 ;
+
+==============================================================================================================================================================================
+
+33. Truncate table statement : 
+
+    - Truncate statement removes complete data  from table without removing table structure.
+    - Iternally this command drops the table and recreate it . 
+    - the number of rows affected by the truncate statement is zero unlike the delete statement returns the no of deleted rows.
+    - This command is more efficient as compared to  delete command because truncate cmnd drop the tale and recreate it 
+        instead of deleting single record once at a time.
+    - we can not use where clause with this command so filtering of records is not possible.
+    - we can not rollback the deleted data after executing this command because the log is not maintained while performing this operation.
+    - we can not use truncate statement when table is referenced by foreign key.
+    - This statement will delete only one table at a time.
+
+    e.g.
+        truncate table table_name ; 
+
+==============================================================================================================================================================================
+
+34. ALTER TABLE Statement : 
+
+    - This statement is used to change the name of table or any field in the table.
+    - It is also used for add or delete an existing column in the table.
+
+    synatx :
+       - add column :  alter table table_name add column_name datatype ;
+       - drop column :  alter table table_name drop column column_name ;
+       - modify column : alter table table_name modify column column_name datatype
+       
+
+==============================================================================================================================================================================
+
+35. Constraints 
+
+    - Constraints are used to specify the rule for data in a table . 
+    - Constraints can be specified when table is created with 'create statement' or after the table is created with 'alter statement'.
+    - Constraint are used to limit the type of data that can go into table. This ensures the accurancy and reliablity of data in table.
+    - If There is any violation between constraint and action , the action is aborted.
+    - Constraint can be column level or table level . 
+    - Column level constraint apply only on column  while table level constraint apply on whole table
+    - The Following constraint are used in SQL :
+        1. NOT NULL         = Ensures a Column cannot have a NULL value .  
+        2. UNIQE            = Ensures that all  values in the column are different . 
+        3. PRIMARY KEY      = Combination of UNIQUE and NOT NULL . Uniqually identified each row in table . 
+        4. FOREIGN KEY      = Prevents actions that would destroy links between tables.
+        5. CHECK            = Ensures that the value in a column satisfies a specific condition.
+        6. DEFAULT          = sets a default value in a column if no value is specified.
+        6. CREATE INDEX     = Used to create and retrive data from the database very quickly.
+
+    synatx : 
+        create table(
+            column1 datatype constraint,
+            column2 datatype constraint,
+            column3 datatype constraint,
+        );
+ 
+NOTE : By Default column can hold NULL values .
+==============================================================================================================================================================================
+
+36. NOT NULL 
+
+    - The NOT NULL constraint enforeces  a column to not acceept NULL values.
+    - The enforces a field to always contain a value , 
+      which means that you can not insert a new record or update a record withoung adding a value to this field.
+
+    e.g. 
+    
+        1. NOT NUll with create statement
+ 
+                CREATE TABLE Persons (
+                    ID int NOT NULL,
+                    LastName varchar(255) NOT NULL,
+                    FirstName varchar(255) NOT NULL,
+                    Age int
+                );
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        2. NOT NUll with ALTER statement 
+
+            ALTER table Persons
+            modify age int not null ;
+
+==============================================================================================================================================================================
+
+37. UNIQE 
+
+    - The UNIQUE constraint ensures that all values in column will be different/unique.
+    - It Means column can not strore duplicate values.
+    - More That one column can have UNIQUE constraint.
+    - Both Primary key and UNIQUE constraint provide gurrentee for uniqueness for column or set of columns.
+    - Primary key has automatically has a UNIQUE constraint.
+    - However , you can have many UNIQUE constraint per table , but only one primary key constraint per table.
+
+    e.g.
+
+        1. UNIQUE Constraint on CREATE TABLE
+
+            CREATE TABLE Persons (
+                ID int NOT NULL,
+                LastName varchar(255) NOT NULL,
+                FirstName varchar(255),
+                Age int,
+                UNIQUE (ID)
+            );
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        2. To Define UNIQUE Constraint on multiple column .
+
+            CREATE TABLE Persons (
+                ID int NOT NULL,
+                LastName varchar(255) NOT NULL,
+                FirstName varchar(255),
+                Age int,
+                CONSTRAINT UC_Person UNIQUE (ID,LastName)
+            );
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        3. UNIQUE Constraint on ALTER TABLE
+
+            ALTER TABLE Persons
+            ADD UNIQUE (ID);
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+        4. DROP a UNIQUE Constraint
+
+            ALTER TABLE Persons
+            DROP INDEX UC_Person;
+ 
+==============================================================================================================================================================================
+
+39. FOREIGN KEY 
+
+    - This constraint is used to link one or more table together.
+    - It is also called as referencing key.
+    - a FOREIGN key is a field in one table , that refers to primary key in another table.
+    - The FOREIGN Key constraint used to prevent action that would destroy links between tables.
+    - the table with foreign key is called child table and the table with primary key is called the referenced or parent table. 
+    e.g.
+
+    1.  CREATE TABLE Orders (
+            OrderID int NOT NULL,
+            OrderNumber int NOT NULL,
+            PersonID int,
+            PRIMARY KEY (OrderID),
+            FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+        );
+
+    2.  Drop a foreign Key
+
+        alter table drop foreign key FK_PersonOrder ;
+      
+==============================================================================================================================================================================
+
+40.  CHECK Constraint
+
+    - The CHECK constraint is used to limit the value range that can placed in a column.
+    - If you define check constraint on column it will allow certain value for this column.
+
+    e.g.
+
+    1. CHECK on CREATE TABLE
+
+        create table person(
+            ID int not null ,
+            name varchar(255) not null,
+            age int ,
+            check(age >= 18)
+        );
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    2. CHECK on ALTER TABLE
+
+        alter table person add check(age >= 18) ; // age column is already created when table is created. 
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    3. DROP a CHECK Constraint
+
+        alter table person drop check(age >= 18);
+
+==============================================================================================================================================================================
+
+41. CREATE INDEX statement 
+
+    - it is used to create indexes in tables.
+    - indexes are used to retrive data from the database more quickly than normal retrive. 
+    - The users can not see the indexes , they are just to speed up searches/queries.
+    syntax :
+        1. Creates an index on a table. Duplicate values are allowed:
+
+            create index index_name on table_name (column1 , column2);
+
+        
+        2. Creates a unique index on a table. Duplicate values are not allowed:
+
+            create UNIQUE index index_name on table_name(column1, column2);
+
+        3. Drop index
+                alter table table_name drop index index_name ;
+
+
+    e.g.
+        create index idx_lastname on person(LastName);
+            
+
+==============================================================================================================================================================================
+
+42. AUTO_INCREMENT Keyword
+
+    - MySQL Uses AUTO_INCREMENT keyword to perform auto-increment feature.
+    - By Default , starting value for AUTO_INCREMENT is 1 , and it will increment by 1 for each record.
+
+==============================================================================================================================================================================
+ 
+43 . What is database ? 
+
+    - Database is an Application that stores organized collection of records.
+    - It allows to us organize data into tables , row , column and indexes to find relevant information very quickly.
+    - Each database contains distinct API for performing operations such as creating , accessing , managing and searching the data it stores.
+    - Many Databases are avaliable like MySQL , MongoDB , Oracle , SQL Server etc.
+    - MySQL implements a database as a directory that stores all files in the form of tables.
+    - Thers are two way to create a database.
+        a. MySQL Command line client.
+        b. MySQL Workbench or any MySQL software.
+
+    - CREATE DATABASE db_name => Used on command line for creating database .
+    - USE db_name => for selecting Perticular database 
+    - SHOW DATABASES => for listing all the databases present in the MySQL Server.
+    - DROP DATABASE db_name => for removing database from MySQL server.
+
+==============================================================================================================================================================================
+
+44. REPLACE ?
+
+    - This statement works the same as insert statement , except that if an old record matches new record then delete existing record and insert new record.
+    - The REPLACE statement performs two action delete and insert .
+    - If No matching record is found with the existing data row, then statndard insert statement is performed
+    e.g.
+        Replace into tbl_name (id,city) values(4,'Pune');
+
+    
+
+==============================================================================================================================================================================
+
+45. Distinct Clause : 
+
+    - Distinct cluase used to fetch only unique records from table.
+    - It is only used  with select statement
+
+
+==============================================================================================================================================================================
+
+47. View :
+
+    - In MySQL , view is a virtual table created by a query by .
+    - It contains rows and column similar to real table.
+    - It is operated similarly to the base table but does not contain any data of its own.
+    e.g. 
+        create view view_name as select columns from table ;
+
+    - Alter view statement is used for update or modify the already created view without dropping it.
+    e.g.
+        alter view view_name as select * from table ;
+
+    - we can drop the existing view by using drop view statement.
+    e.g. drop view view_name;
+
+==============================================================================================================================================================================
+
+Note : 
+    - In MySQL , The Default storage engine is InnoDB Used and index type is BTREE. 
+    - The Default format for date in MySQL is YYYY-MM-DD .
+    - NULL values in MySQL considers distinct values similar to other database.
+    - The indexes other than primary indexes(clustered indexex) called non clustered index.
+
+==============================================================================================================================================================================
+
+49. MySQL Query :
+
+    a. create database :
+        - This statement is used for craete new database.
+        e.g.
+            create database db_name ;
+    
+    b. select/use database :
+        - This statement is used for select database.
+        e.g.
+            use db_name;
+    
+    c. Create query :
+        - it is used to create new table in database.
+        e.g.
+            create table tbl_name(
+                column_name1 datatype constraint ;
+            );
+    
+    d. alter query :
+        - It is used for modify table i.e. add , delete column.
+        e.g.
+            1. alter table tbl_name add column column_name datatype constraint ;
+            2. alter table tbl_name drop column column_name ;
+
+    e. Insert Query : 
+        - It is used for inserting data into existing table.
+        e.g.
+            insert into tbl_name(`column_name`)values("value1");
+
+    f. Update Query : 
+        - It is used for modify data of the table within the database .
+        e.g.
+            1. update table tbl_name set column_name="value" where condition ;=> update  single row 
+            2. update table tbl_name set column_name="value" => update all rows of the table.
+
+    g. Delete Query : 
+        - It is used for delete the records from the table that is no longer required in the database .
+        - This query in MySQL delete the full row and produce the deleted row count.
+        - once we delete the record from table , we can not recover it.
+        e.g.
+           1. delete from tbl_name where column_name="value" => delete specific row
+           2. delete from tbl_name ; => delete all rows from table
+
+    h. Select Query : 
+        - It is used for fetch records from table
+        e.g.
+            select column_names from tbl_name ;
+        
+    i. truncate Query :
+        - It is used for delete all records from table.
+        e.g.
+            truncate table tbl_name ;
+
+    j. drop Query :
+        - It is used for delete table with table structure from database.
+        e.g.
+            drop table tbl_name ; 
+    k. show indexes :
+        - we can get the index information of a table using show indexes statement.
+        e.g.
+            show indexes from tbl_name.
+
+        - if we want getting index information  of table of another database use below query.
+        e.g.
+            show indexes from tbl_name IN db_name ;
+
+==============================================================================================================================================================================
+50. Default constraint :
+
+    - This Constraint is used to set default value for Perticular column when we are not specified the any value.
+    e.g.
+        create table Balaji(
+            id int primary key not null,
+            color varchar(100) default "white"
+        );
+
+==============================================================================================================================================================================
+
+51. create user and give privllages of database to user.
+
+    Step 1 : Create user => create user 'balaji@localhost' identified by 'balaji@123' ;
+    Step 2 : Give privllages => GRANT ALL Privllages on (db_name.*/ *.*) to 'balaji@localhost'  ;
+    Step 3  : Flush Privllages ;
+
+==============================================================================================================================================================================
+ 
+52. GRANT & REVOKE Privilege 
+
+    - MySQL Provide GRANT statement to give access to user account.
+    - MySQL Provide REVOKE statement to remove access from user account.
+
+==============================================================================================================================================================================
+
+53. IFNULL and NULLIF :
+
+    - The IFNULL Function acceept two expression , if first expression is not null then returns first expression otherwise retures second expression.
+    e.g.
+        select IFNULL("Hello","Balaji") ; => o/p Hello.
+
+    - The NULLIF Function acceept two expression , if the first expression is equal to second expression returns NULL else retures first expression.
+    e.g.
+        select NULLIF("Hello","404");=> o/p Hello.
+
+
+==============================================================================================================================================================================
+
+55. If statement :
+
+    - If statement is used in stored programs that implement the basic conditional construct in MySQL.
+    - Based on certain condition , it allows us to execute set of SQL statement . 
+    - it returns one of three values true, false or null.
+
+
+==============================================================================================================================================================================
+57. what is storage engine in mysql ?
+
+    - The Default storage engine is InnoDB Used In Mysql.
+==============================================================================================================================================================================
+ 
+Q. Print below list in decending order without using predefined function
+ 
+
+$array=array('2','4','8','5','1','7','6','9','10','3');
+
+echo "Unsorted array is: ";
+echo "<br />";
+print_r($array);
+
+
+for($j = 0; $j < count($array); $j ++) {
+    for($i = 0; $i < count($array)-1; $i ++){
+
+        if($array[$i] > $array[$i+1]) {
+            $temp = $array[$i+1];
+            $array[$i+1]=$array[$i];
+            $array[$i]=$temp;
+        }       
+    }
+}
+
+echo "Sorted Array is: ";
+echo "<br />";
+print_r($array);
+
+==============================================================================================================================================================================
+Q. Fibonisis series 
+
+=> 
+    $n1 = 0 ;
+    $n2 = 1 ;
+
+    $n = 10 ;
+    echo $n1."\t" .$n2 ;
+    for($i = 2 ;$i < $n ; $i++)
+    {
+        $n3 = $n1 + $n2 ;
+        echo $n3."\t";
+
+        $n1 = $n2 ;
+        $n2 = $n3;
+    }
+==============================================================================================================================================================================
+
+
+ 
