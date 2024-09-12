@@ -10,7 +10,7 @@
 ## Installation Steps
 
 1. Clone the repository: `git clone https://github.com/BalajiBhise/todo.git`
-2. Install dependencies: `composer install`
+2. Install dependencies: `composer update`
 3. Install npm: `npm install`
 4. Create a new database(todo) and update the `.env` file with your database credentials
 5. Run migrations: `php artisan migrate`
