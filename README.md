@@ -12,9 +12,10 @@
 1. Clone the repository: `git clone https://github.com/BalajiBhise/todo.git`
 2. Install dependencies: `composer update`
 3. Install npm: `npm install`
-4. Create a new database(todo) and update the `.env` file with your database credentials
-5. Run migrations: `php artisan migrate`
-6. Run the Seeder : `php artisan db:seed`
+4. Run  : `composer dump-autoload`
+5. Create a new database(todo) and update the `.env` file with your database credentials
+6. Run migrations: `php artisan migrate`
+7. Run the Seeder : `php artisan db:seed`
 
 ## Configuration
 
